@@ -26,7 +26,7 @@
 
         <tr>
             <td class="name">
-              <a href="#<?js= method.name ?>"><?js= method.name ?></a>
+              <a class="<?js= method.inherits ? 'inherited' : '' ?>" href="#<?js= method.name ?>"><?js= method.name ?></a>
               <?js if (method.readonly) { ?>
                 <i title="readonly" class="fa fa-lock"></i>
               <?js } ?>

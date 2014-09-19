@@ -1157,3 +1157,7 @@ td.name .fa {
   padding: 0 0 0 3px;
   opacity: 0.5;
 }
+
+td.name .inherited {
+  opacity: 0.6;
+}
