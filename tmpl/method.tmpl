@@ -4,7 +4,7 @@ var self = this;
 ?>
     <h3 class="name" id="<?js= id ?>"><?js=
       kind === 'class' ? 'Constructor' : (
-        data.attribs + (kind === 'class' ? 'new ' : '') + name + (kind !== 'event' ? data.signature : '')
+        (kind === 'class' ? 'new ' : '') + name + (kind !== 'event' ? data.signature : '') + data.attribs
       )
     ?></h3>
 

@@ -1,6 +1,13 @@
 <?js var data = obj; ?>
 <dt>
-    <h3 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h3>
+    <h3 class="name" id="<?js= id ?>">
+      <?js= name + (data.signature ? data.signature : '') ?>
+      <?js if(data.isEnum) { ?>
+        <span class="label label-info">enum</span>
+      <?js } else { ?>
+        <?js= data.attribs ?>
+      <?js} ?>
+    </h3>
 
     <?js if (data.summary) { ?>
     <p class="summary"><?js= summary ?></p>

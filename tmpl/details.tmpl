@@ -13,6 +13,10 @@ var self = this;
 
     <?js } ?>
 
+    <?js if (data.isEnum) { properties.forEnum = true; ?>
+      <dl><?js= this.partial('properties.tmpl', properties) ?></dl>
+    <?js } ?>
+
     <?js if (data.version) {?>
     <dt class="tag-version">Version:</dt>
     <dd class="tag-version"><ul class="dummy"><li><?js= version ?></li></ul></dd>
