@@ -94,6 +94,17 @@
     <?js } ?>
 
     <?js
+        var members = self.find({kind: 'member', isEnum: true, memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        if (members && members.length) {
+    ?>
+        <h3 class="subsection-title">Enums</h3>
+        <div class="panel panel-default">
+            <?js= self.partial('enum-list.tmpl', members) ?>
+        </div>
+
+    <?js } ?>
+
+    <?js
         var members = self.find({kind: 'member', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (members && members.length) {
     ?>
