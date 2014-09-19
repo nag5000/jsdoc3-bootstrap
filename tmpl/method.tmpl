@@ -2,13 +2,11 @@
 var data = obj;
 var self = this;
 ?>
-<dt>
     <h3 class="name" id="<?js= id ?>"><?js= data.attribs + (kind === 'class' ? 'new ' : '') + name + (kind !== 'event' ? data.signature : '') ?></h3>
 
     <?js if (data.summary) { ?>
     <p class="summary"><?js= summary ?></p>
     <?js } ?>
-</dt>
 <dd>
 
     <?js if (data.description) { ?>
@@ -34,7 +32,7 @@ var self = this;
     <?js } ?>
 
     <?js if (data.params && params.length) { ?>
-        <h5>Parameters:</h5>
+        <h4>Parameters:</h4>
         <?js= this.partial('params.tmpl', params) ?>
     <?js } ?>
 

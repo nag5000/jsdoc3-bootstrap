@@ -1085,6 +1085,18 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+h3 {
+  margin-bottom: 15px;
+}
+
+h4 {
+  margin-top: 20px;
+}
+
+dt {
+  display: inline-block;
+}
+
 .container-fluid {
 
   /* Override default bootstrap container padding */
