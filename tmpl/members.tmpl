@@ -1,6 +1,6 @@
 <?js var data = obj; ?>
 <dt>
-    <h3 class="name" id="<?js= id ?>"><?js= data.attribs + name + (data.signature ? data.signature : '') ?></h3>
+    <h3 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h3>
 
     <?js if (data.summary) { ?>
     <p class="summary"><?js= summary ?></p>
