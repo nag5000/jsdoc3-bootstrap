@@ -1104,6 +1104,14 @@ body {
   border-radius: 0;
 }
 
+.nav > li {
+  border-top: 1px solid #d9d9d9;
+}
+
+.nav > li:first-child {
+  border-top: none;
+}
+
 .well {
   position: fixed;
 
