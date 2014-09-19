@@ -108,8 +108,8 @@
         var methods = self.find({kind: 'function', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (methods && methods.length) {
     ?>
+        <h3 class="subsection-title">Methods</h3>
         <div class="panel panel-default">
-            <h3 class="subsection-title">Methods</h3>
             <?js= self.partial('method-list.tmpl', methods) ?>
         </div>
 
