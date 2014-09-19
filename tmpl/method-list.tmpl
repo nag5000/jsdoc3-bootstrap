@@ -23,6 +23,14 @@
                 <?js if (method.description) { ?>
                     <?js= method.description.replace(/<\/p>[\s\S]*/, '') ?>
                 <?js } ?>
+
+                <?js if (method.inherits) { ?>
+                  (inherited from
+                    <?js= self.linkto(method.inherits, self.htmlsafe(method.inherits)) ?>
+                  )
+                <?js } ?>
+
+
             </td>
         </tr>
 

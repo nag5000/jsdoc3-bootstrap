@@ -5,9 +5,8 @@ var self = this;
 <dl class="details">
     <?js
         var properties = data.properties;
-        if (properties && properties.length && properties.forEach) {
+        if (!data.isEnum && properties && properties.length && properties.forEach) {
     ?>
-
         <h4 class="subsection-title">Properties</h4>
 
         <dl><?js= this.partial('properties.tmpl', properties) ?></dl>
