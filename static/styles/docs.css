@@ -1105,15 +1105,20 @@ dt {
 }
 
 .type-signature {
-  font-size: 18px;
+  margin-left: 3px;
+  font-size: 16px;
 }
 
 .bs-docs-example dd {
   border-bottom: 1px solid #e3e3e3;
 }
 
+.bs-docs-example dd:first-child {
+  border-bottom: none;
+}
+
 .bs-docs-example .details dd {
-  border-bottom: 0;
+  border-bottom: none;
 }
 
 /* Override default bootstrap column gutters */
