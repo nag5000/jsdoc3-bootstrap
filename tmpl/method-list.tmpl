@@ -5,7 +5,6 @@
 <table class="params table table-bordered table-condensed">
     <thead>
         <tr>
-            <th>&nbsp;</th>
             <th>Name</th>
             <th class="last">Description</th>
         </tr>
@@ -17,9 +16,8 @@
             methods.forEach(function(method) {
                 if (!method) { return; }
         ?>
-        
+
         <tr>
-            <td><i class="icon-terminal"></i></td>
             <td class="name"><a href="#<?js= method.name ?>"><?js= method.name ?></a></td>
             <td>
                 <?js if (method.description) { ?>
