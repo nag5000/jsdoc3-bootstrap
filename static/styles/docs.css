@@ -1108,7 +1108,7 @@ dt {
   font-size: 14px;
 }
 
-.type-signature {
+dt .type-signature {
   margin-left: 3px;
   font-size: 16px;
 }
