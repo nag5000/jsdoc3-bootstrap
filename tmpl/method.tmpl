@@ -80,7 +80,7 @@ var self = this;
     } } ?>
 
     <?js if (data.returns && returns.length) { ?>
-    <h5>Returns:</h5>
+    <h4>Returns:</h4>
     <?js if (returns.length > 1) { ?><ul><?js
         returns.forEach(function(r) { ?>
             <li><?js= self.partial('returns.tmpl', r) ?></li>
@@ -92,7 +92,7 @@ var self = this;
     } } ?>
 
     <?js if (data.examples && examples.length) { ?>
-        <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
+        <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
         <?js= this.partial('examples.tmpl', examples) ?>
     <?js } ?>
 </dd>

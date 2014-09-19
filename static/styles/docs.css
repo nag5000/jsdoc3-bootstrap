@@ -1058,6 +1058,10 @@ dt {
   display: inline-block;
 }
 
+.tag-default {
+  display: inline-block;
+}
+
 .container-fluid {
 
   /* Override default bootstrap container padding */
@@ -1113,7 +1117,8 @@ dt {
   border-bottom: 1px solid #e3e3e3;
 }
 
-.bs-docs-example dd:first-child {
+.bs-docs-example dd:first-child,
+.bs-docs-example dd:last-child {
   border-bottom: none;
 }
 
