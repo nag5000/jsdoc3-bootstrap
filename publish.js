@@ -231,7 +231,9 @@ function buildNav(members) {
         });
 
         if (classNav !== '') {
-            nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Classes</li>';
+            nav += '<div class="well well-small">';
+            nav += '<h3>Classes</h3>';
+            nav += '<ul class="nav nav-list">';
             nav += classNav;
             nav += '</ul></div>';
         }

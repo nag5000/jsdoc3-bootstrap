@@ -1081,6 +1081,10 @@ form.bs-docs-example {
 /* --- zanjelly / bval styles --- */
 /* ------------------------------ */
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .container-fluid {
 
   /* Override default bootstrap container padding */
