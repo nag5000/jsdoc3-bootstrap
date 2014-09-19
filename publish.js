@@ -225,7 +225,7 @@ function buildNav(members) {
     if (members.classes.length) {
         members.classes.forEach(function(c) {
             if ( !hasOwnProp.call(seen, c.longname) ) {
-                classNav += '<li>' + linkto(c.longname, '<i class="icon-shield" style="color: #0186d1"></i> ' + c.name)+'</li>';
+                classNav += '<li>' + linkto(c.longname, c.name)+'</li>';
             }
             seen[c.longname] = true;
         });
@@ -498,7 +498,7 @@ exports.publish = function(taffyData, opts, tutorials) {
         if ( hasOwnProp.call(helper.longnameToUrl, longname) ) {
             var myClasses = helper.find(classes, {longname: longname});
             if (myClasses.length) {
-                generate('<i class="icon-shield" style="color:#0186d1"></i> ' + myClasses[0].name, myClasses, helper.longnameToUrl[longname]);
+                generate(myClasses[0].name, myClasses, helper.longnameToUrl[longname]);
             }
 
             var myModules = helper.find(modules, {longname: longname});
