@@ -105,10 +105,10 @@
     <?js } ?>
 
     <?js
-        var members = self.find({kind: 'member', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        var members = self.find({kind: 'member', scope: 'instance', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (members && members.length) {
     ?>
-        <h3 class="subsection-title">Members</h3>
+        <h3 class="subsection-title">Instance Members</h3>
         <div class="panel panel-default">
             <?js= self.partial('member-list.tmpl', members) ?>
         </div>
@@ -116,10 +116,21 @@
     <?js } ?>
 
     <?js
-        var methods = self.find({kind: 'function', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        var methods = self.find({kind: 'function', scope: 'instance', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (methods && methods.length) {
     ?>
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Instance Methods</h3>
+        <div class="panel panel-default">
+            <?js= self.partial('method-list.tmpl', methods) ?>
+        </div>
+
+    <?js } ?>
+
+    <?js
+        var methods = self.find({kind: 'function', scope: 'static', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        if (methods && methods.length) {
+    ?>
+        <h3 class="subsection-title">Static Methods</h3>
         <div class="panel panel-default">
             <?js= self.partial('method-list.tmpl', methods) ?>
         </div>

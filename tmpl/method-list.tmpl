@@ -21,7 +21,7 @@
             <td class="name"><a href="#<?js= method.name ?>"><?js= method.name ?></a></td>
             <td>
                 <?js if (method.description) { ?>
-                    <?js= method.description.replace(/\n\n/g, '</p><p>') ?>
+                    <?js= method.description.replace(/<\/p>[\s\S]*/, '') ?>
                 <?js } ?>
             </td>
         </tr>
