@@ -15,6 +15,9 @@ var self = this;
       <?js } else if (kind === 'event') { ?>
         <?js= name ?>
         <span class="label label-info">event</span>
+      <?js } else if (data.isEnum) { ?>
+        <?js= name ?>
+        <span class="label label-info">enum</span>
       <?js } else { ?>
         <?js= name + data.signature + data.attribs ?>
       <?js } ?>
