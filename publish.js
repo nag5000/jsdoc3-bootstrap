@@ -239,6 +239,7 @@ function buildNav(members) {
         }
     }
 
+    /*
     if (members.events.length) {
         nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Public Events</li>';
         members.events.forEach(function(e) {
@@ -262,6 +263,8 @@ function buildNav(members) {
 
         nav += '</ul></div>';
     }
+
+    */
 
     if (members.namespaces.length) {
         nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Namespaces</li>';

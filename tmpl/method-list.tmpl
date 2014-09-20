@@ -22,6 +22,8 @@
                 method.returns[0].type.names &&
                 method.returns[0].type.names[0];
 
+              method._returns = returns;
+
         ?>
 
         <tr>
@@ -34,7 +36,7 @@
                 <i title="Promise-based async" class="fa fa-random"></i>
               <?js } ?>
             </td>
-            <td>
+            <td class="description">
                 <?js if (method.description) { ?>
                     <?js= method.description.replace(/<\/p>[\s\S]*/, '') ?>
                 <?js } ?>

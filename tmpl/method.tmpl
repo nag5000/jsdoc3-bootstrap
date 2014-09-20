@@ -2,20 +2,50 @@
 var data = obj;
 var self = this;
 ?>
-    <h3 class="name" id="<?js= id ?>"><?js=
-      kind === 'class' ? 'Constructor' : (
-        (kind === 'class' ? 'new ' : '') + name + (kind !== 'event' ? data.signature : '') + data.attribs
-      )
-    ?></h3>
+
+<?js if (kind !== 'class') { ?>
+<dl class="bs-docs-example bs-members">
+  <dt>
+<?js } ?>
+
+    <h3 class="subsection-title name" id="<?js= id ?>">
+
+      <?js if (kind === 'class') { ?>
+        <i class="fa fa-cubes"></i> Constructor
+      <?js } else if (kind === 'event') { ?>
+        <?js= name ?>
+        <span class="label label-info">event</span>
+      <?js } else { ?>
+        <?js= name + data.signature + data.attribs ?>
+      <?js } ?>
+
+      <?js if (data._returns === 'Promise') { ?>
+        <span class="label label-info">async</span>
+      <?js } ?>
+
+    </h3>
 
     <?js if (kind === 'class') { ?>
       <h4><?js= data.attribs + 'new ' + name + data.signature ?></h4>
     <?js } ?>
 
+    <?js if (data.inherited && data.inherits) { ?>
+    <dd class="inherited-from"><ul class="dummy breadcrumb"><li>Inherited From:</li><li>
+        <?js= this.linkto(data.inherits, this.htmlsafe(data.inherits)) ?>
+    </li></dd>
+    <?js } ?>
+
+
+
     <?js if (data.summary) { ?>
     <p class="summary"><?js= summary ?></p>
     <?js } ?>
+
+
+<?js if (kind !== 'class') { ?>
+  </dt>
 <dd>
+<?js } ?>
 
     <?js if (data.description) { ?>
     <div class="description">
@@ -95,4 +125,8 @@ var self = this;
         <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
         <?js= this.partial('examples.tmpl', examples) ?>
     <?js } ?>
-</dd>
+
+<?js if (kind !== 'class') { ?>
+  </dd>
+</dl>
+<?js } ?>

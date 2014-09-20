@@ -94,12 +94,40 @@
     <?js } ?>
 
     <?js
+        var members = self.find({kind: 'member', scope: 'static', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+
+        // filter out enums since i dont know how to have the find() method
+        // work with undefined
+        members = members.filter(function(x) { return !x.isEnum; });
+
+        if (members && members.length) {
+
+    ?>
+        <h3 class="subsection-title"><i class="fa fa-th-large"></i> Constants</h3>
+        <div class="panel panel-default">
+            <?js= self.partial('method-list.tmpl', members) ?>
+        </div>
+
+    <?js } ?>
+
+    <?js
         var members = self.find({kind: 'member', isEnum: true, memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (members && members.length) {
     ?>
-        <h3 class="subsection-title">Enums</h3>
+        <h3 class="subsection-title"><i class="fa fa-sitemap"></i> Enums</h3>
         <div class="panel panel-default">
             <?js= self.partial('method-list.tmpl', members) ?>
+        </div>
+
+    <?js } ?>
+
+    <?js
+        var methods = self.find({kind: 'function', scope: 'static', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        if (methods && methods.length) {
+    ?>
+        <h3 class="subsection-title"><i class="fa fa-gear"></i> Static Methods</h3>
+        <div class="panel panel-default">
+            <?js= self.partial('method-list.tmpl', methods) ?>
         </div>
 
     <?js } ?>
@@ -108,7 +136,7 @@
         var members = self.find({kind: 'member', scope: 'instance', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (members && members.length) {
     ?>
-        <h3 class="subsection-title">Instance Members</h3>
+        <h3 class="subsection-title"><i class="fa fa-navicon"></i> Members</h3>
         <div class="panel panel-default">
             <?js= self.partial('method-list.tmpl', members) ?>
         </div>
@@ -119,7 +147,7 @@
         var methods = self.find({kind: 'function', scope: 'instance', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (methods && methods.length) {
     ?>
-        <h3 class="subsection-title">Instance Methods</h3>
+        <h3 class="subsection-title"><i class="fa fa-cube"></i> Methods</h3>
         <div class="panel panel-default">
             <?js= self.partial('method-list.tmpl', methods) ?>
         </div>
@@ -127,64 +155,25 @@
     <?js } ?>
 
     <?js
-        var methods = self.find({kind: 'function', scope: 'static', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
-        if (methods && methods.length) {
+        var members = self.find({kind: 'event', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        if (members && members.length) {
     ?>
-        <h3 class="subsection-title">Static Methods</h3>
+        <h3 class="subsection-title"><i class="fa fa-bolt"></i> Events</h3>
         <div class="panel panel-default">
-            <?js= self.partial('method-list.tmpl', methods) ?>
+            <?js= self.partial('method-list.tmpl', members) ?>
         </div>
 
     <?js } ?>
 
     <?js
-        var members = self.find({kind: 'member', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+        var members = self.find({memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
         if (members && members.length && members.forEach) {
     ?>
-        <dl class="bs-docs-example bs-members"><?js members.forEach(function(p) { ?>
-            <?js= self.partial('members.tmpl', p) ?>
-        <?js }); ?></dl>
+      <?js members.forEach(function(p) { ?>
+          <?js= self.partial('method.tmpl', p) ?>
+      <?js }); ?>
     <?js } ?>
 
-    <?js
-        var methods = self.find({kind: 'function', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
-        if (methods && methods.length && methods.forEach) {
-    ?>
-        <dl class="bs-docs-example bs-methods"><?js methods.forEach(function(m) { ?>
-            <?js= self.partial('method.tmpl', m) ?>
-        <?js }); ?></dl>
-    <?js } ?>
-
-    <?js
-        var typedefs = self.find({kind: 'typedef', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
-        if (typedefs && typedefs.length && typedefs.forEach) {
-    ?>
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        <dl class="bs-docs-example bs-type-definitions"><?js typedefs.forEach(function(e) {
-                if (e.signature) {
-            ?>
-                <?js= self.partial('method.tmpl', e) ?>
-            <?js
-                }
-                else {
-            ?>
-                <?js= self.partial('members.tmpl', e) ?>
-            <?js
-                }
-            }); ?></dl>
-    <?js } ?>
-
-    <?js
-        var events = self.find({kind: 'event', memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
-        if (events && events.length && events.forEach) {
-    ?>
-        <h3 class="subsection-title">Events</h3>
-
-        <dl class="bs-docs-example bs-events"><?js events.forEach(function(e) { ?>
-            <?js= self.partial('method.tmpl', e) ?>
-        <?js }); ?></dl>
-    <?js } ?>
 </article>
 
 </section>
