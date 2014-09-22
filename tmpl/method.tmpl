@@ -14,7 +14,8 @@ var self = this;
       " id="<?js= id ?>">
 
       <?js if (kind === 'class') { ?>
-        <i class="fa fa-cubes"></i> Constructor
+        <?js= process.env.HEADER_ICONS ? '<i class="fa fa-cubes"></i>' : '' ?>
+        Constructor
       <?js } else if (kind === 'event') { ?>
         <?js= name ?>
         <span class="label label-info">event</span>

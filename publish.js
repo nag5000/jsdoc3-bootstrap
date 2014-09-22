@@ -16,6 +16,8 @@ var template = require('jsdoc/template'),
     //grimbo: use ModuleHelper to trim module path off module link
     ModuleHelper = require('./ModuleHelper').ModuleHelper;
 
+require('dotenv').load();
+
 
 function find(spec) {
     return helper.find(data, spec);
