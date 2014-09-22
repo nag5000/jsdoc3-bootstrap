@@ -27,13 +27,6 @@ var self = this;
     <dd class="tag-since"><ul class="dummy"><li><?js= since ?></dd>
     <?js } ?>
 
-    <?js if (data.deprecated) { ?>
-        <?js
-            if (data.deprecated === true) { ?><span class="yes-def tag-deprecated"><ul class="dummy inline"><li><span class="important tag-deprecated label label-warning">Deprecated</span> Yes</li></ul></span><?js }
-            else { ?><span><ul class="dummy inline"><li><span class="important tag-deprecated label label-warning">Deprecated</span> <?js= data.deprecated ?></li></ul></span><?js }
-        ?>
-    <?js } ?>
-
     <?js if (data.author && author.length) {?>
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">

@@ -1108,7 +1108,7 @@ dt {
   font-size: 14px;
   font-weight: 300;
   display: inline-block;
-  border: solid 1px black;
+  border: solid 1px #999;
   border-radius: 23px;
   position: relative;
   top: -2px;
@@ -1173,6 +1173,26 @@ td.description p {
   opacity: 0.75;
 }
 
+h3.subsection-title {
+  margin-top: 45px;
+}
+
+.bs-members h3.subsection-title {
+  margin-top: 14px;
+}
+
 .nav > li > a {
   padding: 7px;
+}
+
+h3.deprecated, a.deprecated {
+  text-decoration: line-through;
+}
+
+hr {
+  margin: 40px 0;
+}
+
+footer {
+  margin-top: 50px;
 }

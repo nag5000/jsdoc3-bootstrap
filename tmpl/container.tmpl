@@ -165,14 +165,18 @@
 
     <?js } ?>
 
-    <?js
-        var members = self.find({memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
-        if (members && members.length && members.forEach) {
-    ?>
-      <?js members.forEach(function(p) { ?>
-          <?js= self.partial('method.tmpl', p) ?>
-      <?js }); ?>
-    <?js } ?>
+    <hr>
+
+    <div class="large-listing">
+      <?js
+          var members = self.find({memberof: title === 'Global' ? {isUndefined: true} : doc.longname});
+          if (members && members.length && members.forEach) {
+      ?>
+        <?js members.forEach(function(p) { ?>
+            <?js= self.partial('method.tmpl', p) ?>
+        <?js }); ?>
+      <?js } ?>
+    </div>
 
 </article>
 
