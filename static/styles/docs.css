@@ -1202,7 +1202,9 @@ footer {
 }
 
 .from-module {
-  padding-left: 6px;
+  float: right;
+  position: relative;
+  top: -50px;
   font-size: 14px;
 }
 
