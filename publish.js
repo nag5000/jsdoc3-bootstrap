@@ -98,6 +98,8 @@ function addAttribs(f) {
     var attHTML = '';
 
     attribs.forEach(function(ele) {
+        if (ele === 'abstract')
+          ele = 'virtual';
         attHTML += '<span class="label label-info">' + htmlsafe(ele) + '</span> ';
     });
 
@@ -432,6 +434,10 @@ exports.publish = function(taffyData, opts, tutorials) {
         var docletPath;
         if (doclet.meta) {
             docletPath = getPathFromDoclet(doclet);
+
+            // probably needs to be handled better here...
+            if (!sourceFiles[docletPath]) return;
+
             docletPath = sourceFiles[docletPath].shortened;
             if (docletPath) {
                 doclet.meta.filename = docletPath;
