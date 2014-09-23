@@ -1202,7 +1202,12 @@ footer {
 }
 
 .from-module {
+  padding-left: 6px;
   font-size: 14px;
+}
+
+.from-module i.fa {
+  opacity: 0.75;
 }
 
 .class-description {
