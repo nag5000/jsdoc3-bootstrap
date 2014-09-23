@@ -27,6 +27,19 @@ function tutoriallink(tutorial) {
     return helper.toTutorial(tutorial, null, { tag: 'em', classname: 'disabled', prefix: 'Tutorial: ' });
 }
 
+function nodeModuleFromPath(dpath)
+{
+  var re = /node_modules\/([^\/]*)\//g;
+
+  var match;
+  var dmod;
+  while (match = re.exec(dpath)) {
+    dmod = match[1];
+  }
+
+  return dmod || '';
+}
+
 function getAncestorLinks(doclet) {
     return helper.getAncestorLinks(data, doclet);
 }
@@ -457,6 +470,14 @@ exports.publish = function(taffyData, opts, tutorials) {
             addAttribs(doclet);
             doclet.kind = 'member';
         }
+
+        if (doclet.meta && doclet.meta.path) {
+          doclet.meta.moduleName =
+            nodeModuleFromPath(doclet.meta.path) ||
+            packageInfo.name ||
+            '';
+        }
+
     });
 
     var members = helper.getMembers(data);

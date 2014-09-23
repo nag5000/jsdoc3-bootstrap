@@ -1,20 +1,6 @@
 <?js
     var self = this;
     docs.forEach(function(doc, i) {
-
-    if (doc.meta && doc.meta.path.match('node_modules')) {
-      var dpath = doc.meta.path;
-
-      var re = /node_modules\/([^\/]*)\//g;
-
-      var match;
-      var dmod;
-      while (match = re.exec(dpath)) {
-        dmod = match[1];
-      }
-
-      doc._nodeModule = dmod;
-    }
 ?>
 
 <?js if (doc.kind === 'mainpage' || (doc.kind === 'package')) { ?>
@@ -26,13 +12,23 @@
 <section>
 
 <header>
-    <!--h2><?js if (doc.ancestors && doc.ancestors.length) { ?>
-        <span class="ancestors"><?js= doc.ancestors.join('') ?></span>
+    <h1 class="page-header">
+      <?js= doc.name ?>
+    </h1>
+
+    <?js if (doc.meta && doc.meta.moduleName) { ?>
+      <div title="module name" class="from-module">
+        <?js if (process.env.HEADER_ICONS) { ?>
+          <i class="fa fa-book"></i>
+        <?js } else { ?>
+          module:
+        <?js } ?>
+        <code class="module-name">
+          <?js= doc.meta.moduleName ?>
+        </code>
+      </div>
     <?js } ?>
-    <?js= doc.name ?>
-    <?js if (doc.variation) { ?>
-        <sup class="variation"><?js= doc.variation ?></sup>
-    <?js } ?></h2-->
+
     <?js if (doc.classdesc) { ?>
         <div class="class-description"><?js= doc.classdesc ?></div>
     <?js } ?>

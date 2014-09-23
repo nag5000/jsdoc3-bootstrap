@@ -1196,3 +1196,15 @@ hr {
 footer {
   margin-top: 50px;
 }
+
+.page-header {
+  margin-bottom: 14px;
+}
+
+.from-module {
+  font-size: 14px;
+}
+
+.class-description {
+  margin-top: 30px;
+}
