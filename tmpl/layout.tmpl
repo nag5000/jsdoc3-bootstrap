@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Project Name: <?js= title ?></title>
+    <title><?js= this.pageTitle ?></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -19,7 +19,9 @@
     <header class="header navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Project Name</a>
+          <a class="navbar-brand" href="/<?js= this.docdir ?>">
+            <?js= this.pageTitle ?>
+          </a>
         </div>
       </div>
     </header>

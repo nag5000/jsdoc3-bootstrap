@@ -1,6 +1,20 @@
 <?js
     var self = this;
     docs.forEach(function(doc, i) {
+
+    if (doc.meta && doc.meta.path.match('node_modules')) {
+      var dpath = doc.meta.path;
+
+      var re = /node_modules\/([^\/]*)\//g;
+
+      var match;
+      var dmod;
+      while (match = re.exec(dpath)) {
+        dmod = match[1];
+      }
+
+      doc._nodeModule = dmod;
+    }
 ?>
 
 <?js if (doc.kind === 'mainpage' || (doc.kind === 'package')) { ?>

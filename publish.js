@@ -391,7 +391,9 @@ exports.publish = function(taffyData, opts, tutorials) {
 
     // update outdir if necessary, then create outdir
     var packageInfo = ( find({kind: 'package'}) || [] ) [0];
+    rootdir = outdir;
     if (packageInfo && packageInfo.name) {
+        rootdir = outdir;
         outdir = path.join(outdir, packageInfo.name, packageInfo.version);
     }
     fs.mkPath(outdir);
@@ -468,6 +470,11 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.htmlsafe = htmlsafe;
     //grimbo: pass the conf to the template.
     view.outputSourceReference = (true === conf['default'].outputSourceReference);
+    view.packageInfo = packageInfo;
+    view.docdir = require('path').relative(rootdir, outdir);
+    view.pageTitle = packageInfo.name ?
+      packageInfo.name + ' v' + packageInfo.version :
+      'Documentation';
 
     // once for all
     view.nav = buildNav(members);
