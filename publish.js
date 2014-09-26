@@ -409,7 +409,10 @@ exports.publish = function(taffyData, opts, tutorials) {
     rootdir = outdir;
     if (packageInfo && packageInfo.name) {
         rootdir = outdir;
-        outdir = path.join(outdir, packageInfo.name, packageInfo.version);
+
+        // Ignore patch number on versions
+        var version = packageInfo.version.replace(/\.[^.]+$/, '');
+        outdir = path.join(outdir, packageInfo.name, version);
     }
     fs.mkPath(outdir);
 
