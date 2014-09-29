@@ -1179,8 +1179,8 @@ h3.subsection-title {
 
 .bs-members h3.subsection-title {
   /* fix for # links being covered by nav */
-  padding-top: 84px;
-  margin-top: -70px;
+  padding-top: 80px;
+  margin-top: -64px;
 }
 
 .nav > li > a {
