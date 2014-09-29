@@ -215,118 +215,7 @@ function attachModuleSymbols(doclets, modules) {
  * @return {string} The HTML for the navigation sidebar.
  */
 function buildNav(members) {
-    var nav = '',
-        seen = {},
-        hasClassList = false,
-        classNav = '';
-
-    if (members.modules.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Modules</li>';
-        //grimbo: use ModuleHelper to trim module path off module link
-        nav += new ModuleHelper(members.modules, linkto).printModules();
-        nav += '</ul></div>';
-    }
-
-    if (members.externals.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">External</li>';
-        members.externals.forEach(function(e) {
-            if ( !hasOwnProp.call(seen, e.longname) ) {
-                nav += '<li>'+linkto( e.longname, e.name.replace(/(^"|"$)/g, '') )+'</li>';
-            }
-            seen[e.longname] = true;
-        });
-
-        nav += '</ul></div>';
-    }
-
-    if (members.classes.length) {
-        members.classes.forEach(function(c) {
-            if ( !hasOwnProp.call(seen, c.longname) ) {
-                classNav += '<li>' + linkto(c.longname, c.name)+'</li>';
-            }
-            seen[c.longname] = true;
-        });
-
-        if (classNav !== '') {
-            nav += '<div class="well well-small">';
-            nav += '<h3>Classes</h3>';
-            nav += '<ul class="nav nav-list">';
-            nav += classNav;
-            nav += '</ul></div>';
-        }
-    }
-
-    /*
-    if (members.events.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Public Events</li>';
-        members.events.forEach(function(e) {
-            if ( !hasOwnProp.call(seen, e.longname) && !e.inherited ) {
-                if (e.access !== 'private') {
-                    nav += '<li>'+linkto(e.longname, '<i class="icon-bell-alt" style="color: yellow"></i> ' + e.name +' <span class="label label-inverse pull-right">' + e.memberof + '</span>')+'</li>';
-                    seen[e.longname] = true;
-                }
-            }
-        });
-
-        nav += '</ul></div>';
-
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Private Events</li>';
-        members.events.forEach(function(e) {
-            if ( e.access && e.access == 'private') {
-                nav += '<li>'+linkto(e.longname, '<i class="icon-bell-alt" style="color: yellow"></i> ' + e.name +' <span class="label label-inverse pull-right">' + e.memberof + '</span>')+'</li>';
-                seen[e.longname] = true;
-            }
-        });
-
-        nav += '</ul></div>';
-    }
-
-    */
-
-    if (members.namespaces.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Namespaces</li>';
-        members.namespaces.forEach(function(n) {
-            if ( !hasOwnProp.call(seen, n.longname) ) {
-                nav += '<li>'+linkto(n.longname, '<i class="icon-code"></i> ' + n.name)+'</li>';
-            }
-            seen[n.longname] = true;
-        });
-
-        nav += '</ul></div>';
-    }
-
-    if (members.mixins.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Mixins</li>';
-        members.mixins.forEach(function(m) {
-            if ( !hasOwnProp.call(seen, m.longname) ) {
-                nav += '<li>'+linkto(m.longname, '<i class="icon-beaker"></i> ' + m.name)+'</li>';
-            }
-            seen[m.longname] = true;
-        });
-
-        nav += '</ul></div>';
-    }
-
-    if (members.tutorials.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Tutorials</li>';
-        members.tutorials.forEach(function(t) {
-            nav += '<li>'+tutoriallink(t.name)+'</li>';
-        });
-
-        nav += '</ul></div>';
-    }
-
-    if (members.globals.length) {
-        nav += '<div class="well well-small"><ul class="nav nav-list"><li class="nav-header">Global</li>';
-        members.globals.forEach(function(g) {
-            if ( g.kind !== 'typedef' && !hasOwnProp.call(seen, g.longname) ) {
-                nav += '<li>'+linkto(g.longname, '<i class="icon-globe" style="color: black;"></i> ' + g.name)+'</li>';
-            }
-            seen[g.longname] = true;
-        });
-
-        nav += '</ul></div>';
-    }
+    var nav = '';
 
     return nav;
 }
@@ -502,6 +391,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.outputSourceReference = (true === conf['default'].outputSourceReference);
     view.packageInfo = packageInfo;
     view.docdir = require('path').relative(rootdir, outdir);
+    view.members = members;
     view.pageTitle = packageInfo.name ?
       packageInfo.name + ' v' + packageInfo.version :
       'Documentation';

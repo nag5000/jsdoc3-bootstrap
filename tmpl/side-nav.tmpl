@@ -1,0 +1,48 @@
+<?js
+
+  var events  = this.members.events;
+  var classes = this.members.classes;
+
+  function makeLink(longname) {
+    var parts = longname.match(/^([^.]+)(.([^:]+):(.*))?/);
+
+    if (!parts) return '';
+
+    var cname  = parts[1];
+    var type   = parts[3];
+    var member = parts[4];
+
+    var href = cname + '.html';
+
+    if (type || member) {
+      href += '#';
+      href += type ? type + ':' : '';
+      href += member;
+    }
+
+    return href;
+  }
+?>
+
+<?js function renderListing(heading, members) { ?>
+
+  <div>
+    <?js if (members) { ?>
+      <h3><?js= heading ?></h3>
+      <ul class="member-listing">
+        <?js members.forEach(function(member, index) { ?>
+          <li>
+            <a href="<?js= makeLink(member.longname) ?>">
+              <?js= member.id.replace('event:', '') ?>
+            </a>
+          </li>
+        <?js }) ?>
+      </ul>
+    <?js } ?>
+  </div>
+
+<?js } ?>
+
+<?js renderListing('Classes', this.members.classes) ?>
+
+<?js renderListing('Events', this.members.events) ?>

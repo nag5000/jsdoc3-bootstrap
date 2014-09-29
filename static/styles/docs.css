@@ -1074,7 +1074,7 @@ dt {
   /* fixed navbar is outside the layout so we need some margin
    * on our content to ensure shit doesn't go under the nav
    */
-  margin-top: 50px;
+  /*margin-top: 50px; */
 }
 
 .navbar {
@@ -1178,7 +1178,9 @@ h3.subsection-title {
 }
 
 .bs-members h3.subsection-title {
-  margin-top: 14px;
+  /* fix for # links being covered by nav */
+  padding-top: 84px;
+  margin-top: -70px;
 }
 
 .nav > li > a {
@@ -1215,3 +1217,24 @@ footer {
 .class-description {
   margin-top: 30px;
 }
+
+.primary-content {
+  margin-top: 30px;
+}
+
+.large-listing h3 {
+}
+
+.sidenav {
+  padding-top: 20px;
+}
+
+.sidenav ul {
+  padding-left: 14px;
+}
+
+.sidenav li {
+  list-style-type: none;
+  padding-bottom: 4px;
+}
+
