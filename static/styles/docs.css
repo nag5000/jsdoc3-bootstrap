@@ -1237,3 +1237,9 @@ footer {
   padding-bottom: 4px;
 }
 
+.readme h1 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 9px;
+}
