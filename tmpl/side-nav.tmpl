@@ -24,11 +24,18 @@
   }
 ?>
 
-<?js function renderListing(heading, members) { ?>
+<?js console.log(this.classesByModuleName); ?>
+
+<?js function renderListing(heading, members, icon) { ?>
 
   <div>
     <?js if (members) { ?>
-      <h3><?js= heading ?></h3>
+
+      <h3 class="subsection-title">
+        <?js= process.env.HEADER_ICONS ? '<i class="fa fa-' + icon + '"></i>' : '' ?>
+        <?js= heading ?>
+      </h3>
+
       <ul class="member-listing">
         <?js members.forEach(function(member, index) { ?>
           <li>
@@ -43,6 +50,6 @@
 
 <?js } ?>
 
-<?js renderListing('Classes', this.members.classes) ?>
+<?js renderListing('Classes', this.members.classes, 'cubes') ?>
 
-<?js renderListing('Events', this.members.events) ?>
+<?js renderListing('Events', this.members.events, 'bolt') ?>
