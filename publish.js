@@ -16,6 +16,8 @@ var template = require('jsdoc/template'),
     //grimbo: use ModuleHelper to trim module path off module link
     ModuleHelper = require('./ModuleHelper').ModuleHelper;
 
+var _ = require('underscore');
+
 require('dotenv').load();
 
 
@@ -392,6 +394,9 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.packageInfo = packageInfo;
     view.docdir = require('path').relative(rootdir, outdir);
     view.members = members;
+    view.classesByModuleName = _.groupBy(members.classes, function(m) {
+      return (m && m.meta && m.meta.moduleName) || '';
+    });
     view.pageTitle = packageInfo.name ?
       packageInfo.name + ' v' + packageInfo.version :
       'Documentation';
