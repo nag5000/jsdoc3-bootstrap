@@ -3,6 +3,8 @@
   var events  = this.members.events;
   var classes = this.members.classes;
 
+  var self = this;
+
   function makeLink(longname) {
     var parts = longname.match(/^([^.]+)(.([^:]+):(.*))?/);
 
@@ -37,8 +39,7 @@
       <ul class="member-listing">
         <?js members.forEach(function(member, index) { ?>
           <li>
-            <a href="<?js= makeLink(member.longname) ?>">
-              <?js= member.id.replace('event:', '') ?>
+              <?js= self.linkto(member.longname, member.name) ?>
             </a>
           </li>
         <?js }) ?>
