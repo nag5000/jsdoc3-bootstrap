@@ -4,26 +4,6 @@
   var classes = this.members.classes;
 
   var self = this;
-
-  function makeLink(longname) {
-    var parts = longname.match(/^([^.]+)(.([^:]+):(.*))?/);
-
-    if (!parts) return '';
-
-    var cname  = parts[1];
-    var type   = parts[3];
-    var member = parts[4];
-
-    var href = cname + '.html';
-
-    if (type || member) {
-      href += '#';
-      href += type ? type + ':' : '';
-      href += member;
-    }
-
-    return href;
-  }
 ?>
 
 <?js function renderListing(heading, members, icon) { ?>
