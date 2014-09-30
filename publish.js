@@ -394,9 +394,57 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.packageInfo = packageInfo;
     view.docdir = require('path').relative(rootdir, outdir);
     view.members = members;
-    view.classesByModuleName = _.groupBy(members.classes, function(m) {
+
+    var gclasses = _.groupBy(members.classes, function(m) {
       return (m && m.meta && m.meta.moduleName) || '';
     });
+
+    var gevents = _.groupBy(members.events, function(m) {
+      return (m && m.meta && m.meta.moduleName) || '';
+    });
+
+    var byModuleName = {};
+
+    function addThing(m) {
+      var mname = m && m.meta && m.meta.moduleName || '';
+      var mods = byModuleName[mname];
+      if (!mods) mods = byModuleName[mname] = [];
+      mods.push(m);
+    }
+
+    members.classes.forEach(addThing);
+    /*
+    members.events.forEach(addThing);
+    find({ kind: 'member', isEnum: true }).forEach(addThing);
+    find({ kind: 'function', scope: 'static' }).forEach(addThing);
+    */
+
+    // convert to sorted array
+    var sortedModules = [];
+    for (var mname in byModuleName) {
+      var things = byModuleName[mname];
+      var entry = {
+        name: mname,
+        things: _.sortBy(things, function(x) { return x.name; })
+      };
+
+      // Add additional things
+      things.forEach(function(thing) {
+        var subthings = thing._subthings = [];
+
+        thing._subthings = []
+          .concat(find({ kind: 'event', memberof: thing.longname  }))
+          .concat(find({ kind: 'function', scope: 'static', memberof: thing.longname  }))
+          .concat(find({ kind: 'member', isEnum: true, memberof: thing.longname  }))
+          ;
+
+      });
+
+      sortedModules.push(entry);
+    }
+    sortedModules = _.sortBy(sortedModules, function(x) { return x.name; });
+    view.sortedModules = sortedModules;
+
     view.pageTitle = packageInfo.name ?
       packageInfo.name + ' v' + packageInfo.version :
       'Documentation';

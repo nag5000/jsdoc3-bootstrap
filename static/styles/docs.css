@@ -1243,3 +1243,14 @@ footer {
   border-bottom: 1px solid #eee;
   padding-bottom: 9px;
 }
+
+.module-list .thing-list {
+  padding-top: 5px;
+}
+
+.module-list .thing i {
+  display: inline-block;
+  text-align: center;
+  width: 21px;
+  opacity: 0.6;
+}
