@@ -30,12 +30,12 @@ function renderThing(thing) { ?>
 
 <div class="module-list">
   <h3>Modules</h3>
-  <ul>
+  <ul class="module-listing">
   <?js this.sortedModules.forEach(function(entry) {
     var mname = entry.name;
     var things = entry.things;
   ?>
-    <li class="collapsed collapsable module-item">
+    <li class="collapsable module-item">
       <span class="collapsed-status">
         <i class="expand fa fa-plus-square-o"></i>
         <i class="collapse fa fa-minus-square-o"></i>
