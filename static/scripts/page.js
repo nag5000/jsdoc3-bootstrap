@@ -6,10 +6,8 @@ $(function() {
 
     if (collapsed) {
       $li.removeClass('collapsed');
-      console.log('removed');
     } else {
       $li.addClass('collapsed');
-      console.log('added');
     }
   });
 
