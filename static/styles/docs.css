@@ -1234,7 +1234,7 @@ footer {
 
 .sidenav li {
   list-style-type: none;
-  padding-bottom: 4px;
+  margin: 2px 0;
 }
 
 .readme h1 {
@@ -1245,7 +1245,6 @@ footer {
 }
 
 .module-list .thing-list {
-  padding-top: 5px;
 }
 
 .module-list .thing i {
@@ -1254,3 +1253,34 @@ footer {
   width: 21px;
   opacity: 0.6;
 }
+
+.navbar .external-links {
+  padding-right: 20px;
+}
+
+.navbar .external-links i {
+  font-size: 30px;
+  color: #999;
+  padding: 10px;
+}
+
+.module-list .module-item  {
+  cursor: pointer;
+}
+
+.module-list li.collapsed ul {
+  display: none;
+}
+
+.module-list li i.expand {
+  display: none;
+}
+
+.module-list li.collapsed i.collapse {
+  display: none;
+}
+
+.module-list li.collapsed i.expand {
+  display: inline-block;
+}
+

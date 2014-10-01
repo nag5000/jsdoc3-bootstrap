@@ -35,7 +35,12 @@ function renderThing(thing) { ?>
     var mname = entry.name;
     var things = entry.things;
   ?>
-    <li class="module-item">
+    <li class="collapsed collapsable module-item">
+      <span class="collapsed-status">
+        <i class="expand fa fa-plus-square-o"></i>
+        <i class="collapse fa fa-minus-square-o"></i>
+      </span>
+
       <?js= mname ?>
       <ul class="thing-list">
         <?js things.forEach(function(thing) { ?>
