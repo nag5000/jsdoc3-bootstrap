@@ -1284,3 +1284,10 @@ footer {
   display: inline-block;
 }
 
+li.collapsable i {
+  position: relative;
+  top: 1px;
+  left: -2px;
+  opacity: 0.6;
+}
+
