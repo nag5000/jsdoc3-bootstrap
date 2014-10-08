@@ -29,6 +29,11 @@
       </div>
     <?js } ?>
 
+    <!-- dat inline script LOOKN REAL NASTY -->
+    <script>
+      jQuery('[data-module-name="<?js= doc.meta.moduleName ?>"]').removeClass('collapsed');
+    </script>
+
     <?js if (doc.classdesc) { ?>
         <div class="class-description"><?js= doc.classdesc ?></div>
     <?js } ?>
