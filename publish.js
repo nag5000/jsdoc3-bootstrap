@@ -240,6 +240,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
     // doesn't try to hand them out later
     var indexUrl = helper.getUniqueFilename('index');
+    view.indexUrl = indexUrl;
     // don't call registerLink() on this one! 'index' is also a valid longname
 
     var globalUrl = helper.getUniqueFilename('global');
