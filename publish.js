@@ -299,13 +299,6 @@ exports.publish = function(taffyData, opts, tutorials) {
     // update outdir if necessary, then create outdir
     var packageInfo = ( find({kind: 'package'}) || [] ) [0];
     rootdir = outdir;
-    if (packageInfo && packageInfo.name) {
-        rootdir = outdir;
-
-        // Ignore patch number on versions
-        var version = packageInfo.version.replace(/\.[^.]+$/, '');
-        outdir = path.join(outdir, packageInfo.name, version);
-    }
     fs.mkPath(outdir);
 
     // copy static files to outdir
